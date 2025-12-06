@@ -10,8 +10,14 @@ export interface LightDisplay {
   features?: string[];
 }
 
+export interface UserLocation {
+  lat: number;
+  lng: number;
+}
+
 export interface Route {
   displays: LightDisplay[];
   totalDistance?: number;
   estimatedTime?: number;
+  origin?: UserLocation;
 }

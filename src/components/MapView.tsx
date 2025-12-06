@@ -1,16 +1,18 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   GoogleMap,
   LoadScript,
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import { LightDisplay } from "../types";
+import { LightDisplay, UserLocation } from "../types";
 
 interface MapViewProps {
   displays: LightDisplay[];
   selectedDisplays: number[];
   onDisplaySelect: (id: number) => void;
+  userLocation: UserLocation | null;
+  locationError: string | null;
 }
 
 // Map container styling - fills parent container
@@ -38,11 +40,23 @@ const MapView: React.FC<MapViewProps> = ({
   displays,
   selectedDisplays,
   onDisplaySelect,
+  userLocation,
+  locationError,
 }) => {
   // Track which marker's info window is currently open
   const [selectedMarker, setSelectedMarker] = useState<LightDisplay | null>(
     null,
   );
+
+  // Track map instance to update center when user location is available
+  const [map, setMap] = useState<google.maps.Map | null>(null);
+
+  // Center map on user location when available
+  useEffect(() => {
+    if (map && userLocation) {
+      map.panTo({ lat: userLocation.lat, lng: userLocation.lng });
+    }
+  }, [map, userLocation]);
 
   // Handle clicking on a map marker
   const handleMarkerClick = useCallback((display: LightDisplay) => {
@@ -63,10 +77,26 @@ const MapView: React.FC<MapViewProps> = ({
     >
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        center={center}
+        center={userLocation || center}
         zoom={13}
         options={mapOptions}
+        onLoad={(map) => setMap(map)}
       >
+        {/* User location marker - blue dot like native Google Maps */}
+        {userLocation && (
+          <Marker
+            position={{ lat: userLocation.lat, lng: userLocation.lng }}
+            icon={{
+              path: window.google.maps.SymbolPath.CIRCLE,
+              scale: 8,
+              fillColor: "#4285F4",
+              fillOpacity: 1,
+              strokeColor: "#ffffff",
+              strokeWeight: 2,
+            }}
+            title="Your Location"
+          />
+        )}
         {/* Render markers for all light displays */}
         {displays.map((display) => (
           <Marker

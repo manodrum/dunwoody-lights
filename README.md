@@ -5,6 +5,8 @@ A React TypeScript web application that helps users discover and navigate the be
 ## Features
 
 - 📍 Interactive Google Maps integration with custom markers
+- 🧭 Automatic detection of your current location with blue marker
+- 🚗 Routes start from your current location for easy navigation
 - 🎅 Browse 10+ curated holiday light displays in Dunwoody
 - ⭐ View ratings, descriptions, and special features for each display
 - ✅ Select multiple displays to create a custom route
@@ -61,11 +63,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Usage
 
-1. **Browse Displays**: View all holiday light displays in the sidebar and on the map
-2. **Click Markers**: Click on map markers to see details about each display
-3. **Select Displays**: Click on displays in the sidebar or use the "Add to Route" button in map info windows
-4. **Create Route**: Once you've selected 2 or more displays, click "Open in Google Maps" to generate a navigation route
-5. **Navigate**: The route will open in Google Maps where you can start turn-by-turn navigation
+1. **Allow Location Access**: When prompted, allow the app to access your location for personalized routes
+2. **Browse Displays**: View all holiday light displays in the sidebar and on the map
+3. **Click Markers**: Click on map markers to see details about each display
+   - Blue marker = Your current location
+   - Red markers = Unselected displays
+   - Green markers = Selected displays (with bounce animation)
+4. **Select Displays**: Click on displays in the sidebar or use the "Add to Route" button in map info windows
+5. **Create Route**: Once you've selected 1 or more displays, click "Open in Google Maps" to generate a navigation route
+6. **Navigate**: The route will open in Google Maps starting from your current location with turn-by-turn navigation
 
 ## Project Structure
 

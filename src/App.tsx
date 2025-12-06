@@ -1,12 +1,40 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import MapView from "./components/MapView";
 import Sidebar from "./components/Sidebar";
-import { LightDisplay } from "./types";
+import { LightDisplay, UserLocation } from "./types";
 import lightsData from "./data/lights.json";
 
 const App: React.FC = () => {
   const [displays] = useState<LightDisplay[]>(lightsData as LightDisplay[]);
   const [selectedDisplays, setSelectedDisplays] = useState<number[]>([]);
+  const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
+  const [locationError, setLocationError] = useState<string | null>(null);
+
+  // Get user's current location
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+          setLocationError(null);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          setLocationError(error.message);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0,
+        },
+      );
+    } else {
+      setLocationError("Geolocation is not supported by your browser");
+    }
+  }, []);
 
   const handleDisplaySelect = useCallback((id: number) => {
     setSelectedDisplays((prev) => {
@@ -19,8 +47,8 @@ const App: React.FC = () => {
   }, []);
 
   const handleCreateRoute = useCallback(() => {
-    if (selectedDisplays.length < 2) {
-      alert("Please select at least 2 displays to create a route");
+    if (selectedDisplays.length < 1) {
+      alert("Please select at least 1 display to create a route");
       return;
     }
 
@@ -29,29 +57,48 @@ const App: React.FC = () => {
       selectedDisplays.includes(display.id),
     );
 
-    // Create waypoints for Google Maps URL
-    const origin = selectedDisplayObjects[0];
-    const destination =
-      selectedDisplayObjects[selectedDisplayObjects.length - 1];
-    const waypoints = selectedDisplayObjects
-      .slice(1, -1)
-      .map((display) => `${display.lat},${display.lng}`)
-      .join("|");
-
     // Build Google Maps directions URL
     let mapsUrl = `https://www.google.com/maps/dir/?api=1`;
-    mapsUrl += `&origin=${origin.lat},${origin.lng}`;
-    mapsUrl += `&destination=${destination.lat},${destination.lng}`;
 
-    if (waypoints) {
-      mapsUrl += `&waypoints=${waypoints}`;
+    // Use user's location as origin if available, otherwise use first selected display
+    if (userLocation) {
+      mapsUrl += `&origin=${userLocation.lat},${userLocation.lng}`;
+
+      // All selected displays become waypoints/destination
+      const destination =
+        selectedDisplayObjects[selectedDisplayObjects.length - 1];
+      mapsUrl += `&destination=${destination.lat},${destination.lng}`;
+
+      if (selectedDisplayObjects.length > 1) {
+        const waypoints = selectedDisplayObjects
+          .slice(0, -1)
+          .map((display) => `${display.lat},${display.lng}`)
+          .join("|");
+        mapsUrl += `&waypoints=${waypoints}`;
+      }
+    } else {
+      // Fallback: use first selected display as origin if no user location
+      const origin = selectedDisplayObjects[0];
+      const destination =
+        selectedDisplayObjects[selectedDisplayObjects.length - 1];
+
+      mapsUrl += `&origin=${origin.lat},${origin.lng}`;
+      mapsUrl += `&destination=${destination.lat},${destination.lng}`;
+
+      if (selectedDisplayObjects.length > 2) {
+        const waypoints = selectedDisplayObjects
+          .slice(1, -1)
+          .map((display) => `${display.lat},${display.lng}`)
+          .join("|");
+        mapsUrl += `&waypoints=${waypoints}`;
+      }
     }
 
     mapsUrl += `&travelmode=driving`;
 
     // Open in new tab
     window.open(mapsUrl, "_blank");
-  }, [displays, selectedDisplays]);
+  }, [displays, selectedDisplays, userLocation]);
 
   const handleClearRoute = useCallback(() => {
     setSelectedDisplays([]);
@@ -67,6 +114,8 @@ const App: React.FC = () => {
           onDisplaySelect={handleDisplaySelect}
           onCreateRoute={handleCreateRoute}
           onClearRoute={handleClearRoute}
+          userLocation={userLocation}
+          locationError={locationError}
         />
       </div>
 
@@ -76,6 +125,8 @@ const App: React.FC = () => {
           displays={displays}
           selectedDisplays={selectedDisplays}
           onDisplaySelect={handleDisplaySelect}
+          userLocation={userLocation}
+          locationError={locationError}
         />
       </div>
     </div>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { LightDisplay } from '../types';
+import React from "react";
+import { LightDisplay, UserLocation } from "../types";
 
 interface SidebarProps {
   displays: LightDisplay[];
@@ -7,6 +7,8 @@ interface SidebarProps {
   onDisplaySelect: (id: number) => void;
   onCreateRoute: () => void;
   onClearRoute: () => void;
+  userLocation: UserLocation | null;
+  locationError: string | null;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -15,6 +17,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   onDisplaySelect,
   onCreateRoute,
   onClearRoute,
+  userLocation,
+  locationError,
 }) => {
   const isSelected = (id: number) => selectedDisplays.includes(id);
 
@@ -23,9 +27,27 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Header */}
       <div className="p-6 bg-gradient-to-r from-holiday-red to-holiday-green text-white">
         <h1 className="text-3xl font-bold mb-2">🎄 Dunwoody Lights</h1>
-        <p className="text-sm opacity-90">
-          Holiday Light Display Guide
-        </p>
+        <p className="text-sm opacity-90">Holiday Light Display Guide</p>
+      </div>
+
+      {/* Location Status */}
+      <div className="px-4 pt-4 pb-2 bg-blue-50 border-b border-blue-200">
+        {userLocation ? (
+          <div className="flex items-center text-sm text-blue-700">
+            <span className="mr-2">📍</span>
+            <span className="font-medium">Your location detected</span>
+          </div>
+        ) : locationError ? (
+          <div className="text-xs text-gray-600">
+            <span className="mr-1">⚠️</span>
+            Location unavailable - routes will start from first display
+          </div>
+        ) : (
+          <div className="flex items-center text-sm text-gray-600">
+            <span className="mr-2">🔄</span>
+            <span>Getting your location...</span>
+          </div>
+        )}
       </div>
 
       {/* Route Controls */}
@@ -33,17 +55,18 @@ const Sidebar: React.FC<SidebarProps> = ({
         <div className="p-4 bg-gray-50 border-b border-gray-200">
           <div className="mb-2">
             <span className="font-semibold text-gray-700">
-              {selectedDisplays.length} display{selectedDisplays.length !== 1 ? 's' : ''} selected
+              {selectedDisplays.length} display
+              {selectedDisplays.length !== 1 ? "s" : ""} selected
             </span>
           </div>
           <div className="flex gap-2">
             <button
               onClick={onCreateRoute}
-              disabled={selectedDisplays.length < 2}
+              disabled={selectedDisplays.length < 1}
               className={`flex-1 py-2 px-4 rounded font-semibold text-sm transition-colors ${
-                selectedDisplays.length >= 2
-                  ? 'bg-holiday-green hover:bg-green-700 text-white'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                selectedDisplays.length >= 1
+                  ? "bg-holiday-green hover:bg-green-700 text-white"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
               }`}
             >
               🗺️ Open in Google Maps
@@ -55,9 +78,15 @@ const Sidebar: React.FC<SidebarProps> = ({
               Clear
             </button>
           </div>
-          {selectedDisplays.length < 2 && (
+          {selectedDisplays.length < 1 && (
             <p className="text-xs text-gray-500 mt-2">
-              Select at least 2 displays to create a route
+              Select at least 1 display to create a route
+              {userLocation && " (starting from your location)"}
+            </p>
+          )}
+          {selectedDisplays.length >= 1 && userLocation && (
+            <p className="text-xs text-green-600 mt-2">
+              ✓ Route will start from your current location
             </p>
           )}
         </div>
@@ -75,8 +104,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                 key={display.id}
                 className={`border rounded-lg p-4 cursor-pointer transition-all ${
                   isSelected(display.id)
-                    ? 'border-holiday-green bg-green-50 shadow-md'
-                    : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow'
+                    ? "border-holiday-green bg-green-50 shadow-md"
+                    : "border-gray-200 bg-white hover:border-gray-300 hover:shadow"
                 }`}
                 onClick={() => onDisplaySelect(display.id)}
               >
@@ -85,7 +114,9 @@ const Sidebar: React.FC<SidebarProps> = ({
                     {display.name}
                   </h3>
                   {isSelected(display.id) && (
-                    <span className="text-holiday-green font-bold text-xl">✓</span>
+                    <span className="text-holiday-green font-bold text-xl">
+                      ✓
+                    </span>
                   )}
                 </div>
 
@@ -96,7 +127,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 {display.rating && (
                   <div className="flex items-center mb-2">
                     <span className="text-yellow-500 text-sm">
-                      {'⭐'.repeat(display.rating)}
+                      {"⭐".repeat(display.rating)}
                     </span>
                   </div>
                 )}
