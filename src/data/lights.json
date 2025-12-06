@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Winter Wonderland on Vermack",
+    "address": "4500 Vermack Rd, Dunwoody, GA 30338",
+    "lat": 33.9321,
+    "lng": -84.3345,
+    "description": "Amazing display with synchronized music and thousands of lights",
+    "rating": 5,
+    "features": ["Synchronized Music", "Inflatables", "Projections"]
+  },
+  {
+    "id": 2,
+    "name": "North Peachtree Spectacular",
+    "address": "5200 North Peachtree Rd, Dunwoody, GA 30338",
+    "lat": 33.9456,
+    "lng": -84.3298,
+    "description": "Classic holiday display with beautiful traditional decorations",
+    "rating": 4,
+    "features": ["Traditional Lights", "Nativity Scene"]
+  },
+  {
+    "id": 3,
+    "name": "Chamblee Dunwoody Road Lights",
+    "address": "2100 Chamblee Dunwoody Rd, Dunwoody, GA 30338",
+    "lat": 33.9187,
+    "lng": -84.3156,
+    "description": "Colorful animated display with Santa and reindeer",
+    "rating": 5,
+    "features": ["Animated Displays", "Santa Scene", "Music"]
+  },
+  {
+    "id": 4,
+    "name": "Dunwoody Village Display",
+    "address": "5555 Chamblee Dunwoody Rd, Dunwoody, GA 30338",
+    "lat": 33.9312,
+    "lng": -84.3387,
+    "description": "Elegant white and gold themed lights throughout the property",
+    "rating": 4,
+    "features": ["Elegant Theme", "LED Lights"]
+  },
+  {
+    "id": 5,
+    "name": "Mount Vernon Christmas",
+    "address": "4800 Mount Vernon Rd, Dunwoody, GA 30338",
+    "lat": 33.9412,
+    "lng": -84.3421,
+    "description": "Multi-colored extravaganza with candy cane lane",
+    "rating": 5,
+    "features": ["Candy Canes", "Rainbow Lights", "Photo Spot"]
+  },
+  {
+    "id": 6,
+    "name": "Tilly Mill Magic",
+    "address": "2500 Tilly Mill Rd, Dunwoody, GA 30338",
+    "lat": 33.9234,
+    "lng": -84.3112,
+    "description": "Whimsical display with animated characters and projections",
+    "rating": 4,
+    "features": ["Projections", "Animated Characters", "Interactive"]
+  },
+  {
+    "id": 7,
+    "name": "Georgetown Glow",
+    "address": "1200 Georgetown Way, Dunwoody, GA 30338",
+    "lat": 33.9378,
+    "lng": -84.3267,
+    "description": "Neighborhood favorite with rooftop Santa and sleigh",
+    "rating": 4,
+    "features": ["Rooftop Display", "Traditional Theme"]
+  },
+  {
+    "id": 8,
+    "name": "Pernoshal Court Celebration",
+    "address": "4300 Pernoshal Ct, Dunwoody, GA 30096",
+    "lat": 33.9523,
+    "lng": -84.3389,
+    "description": "Synchronized light show set to popular holiday music",
+    "rating": 5,
+    "features": ["Synchronized Music", "Drive-by FM Station", "Spectacular"]
+  },
+  {
+    "id": 9,
+    "name": "Ashford Dunwoody Lights",
+    "address": "4900 Ashford Dunwoody Rd, Dunwoody, GA 30338",
+    "lat": 33.9289,
+    "lng": -84.3456,
+    "description": "Beautiful display with icicle lights and LED trees",
+    "rating": 4,
+    "features": ["Icicle Lights", "LED Trees", "Elegant"]
+  },
+  {
+    "id": 10,
+    "name": "Spalding Drive Winter Scene",
+    "address": "5100 Spalding Dr, Dunwoody, GA 30338",
+    "lat": 33.9367,
+    "lng": -84.3198,
+    "description": "Charming winter scene with snowmen and Santa workshop",
+    "rating": 4,
+    "features": ["Winter Theme", "Snowmen", "Santa Workshop"]
+  }
+]
