@@ -106,33 +106,12 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col">
-      {/* Mobile Tab Navigation */}
-      <div className="md:hidden flex border-b border-gray-300 bg-white">
-        <button
-          onClick={() => setActiveTab("map")}
-          className={`flex-1 py-3 px-4 font-semibold text-sm transition-colors ${
-            activeTab === "map"
-              ? "bg-holiday-green text-white border-b-2 border-holiday-green"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-          }`}
-        >
-          🗺️ Map
-        </button>
-        <button
-          onClick={() => setActiveTab("list")}
-          className={`flex-1 py-3 px-4 font-semibold text-sm transition-colors ${
-            activeTab === "list"
-              ? "bg-holiday-green text-white border-b-2 border-holiday-green"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-          }`}
-        >
-          📋 List ({selectedDisplays.length})
-        </button>
-      </div>
-
+    <div className="h-screen flex flex-col" style={{ height: "100dvh" }}>
       {/* Content Area */}
-      <div className="flex-1 flex flex-row overflow-hidden">
+      <div
+        className="flex-1 flex flex-row overflow-hidden"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
         {/* Sidebar */}
         <div
           className={`w-full md:w-96 h-full overflow-hidden md:border-r border-gray-300 ${
@@ -164,6 +143,33 @@ const App: React.FC = () => {
             locationError={locationError}
           />
         </div>
+      </div>
+
+      {/* Mobile Tab Navigation - Bottom */}
+      <div
+        className="md:hidden flex border-t border-gray-300 bg-white fixed bottom-0 left-0 right-0 z-50"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
+        <button
+          onClick={() => setActiveTab("map")}
+          className={`flex-1 py-3 px-4 font-semibold text-sm transition-colors ${
+            activeTab === "map"
+              ? "bg-holiday-green text-white border-t-2 border-holiday-green"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+          }`}
+        >
+          🗺️ Map
+        </button>
+        <button
+          onClick={() => setActiveTab("list")}
+          className={`flex-1 py-3 px-4 font-semibold text-sm transition-colors ${
+            activeTab === "list"
+              ? "bg-holiday-green text-white border-t-2 border-holiday-green"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+          }`}
+        >
+          📋 List ({selectedDisplays.length})
+        </button>
       </div>
     </div>
   );
