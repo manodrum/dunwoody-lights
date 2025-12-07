@@ -9,6 +9,7 @@ const App: React.FC = () => {
   const [selectedDisplays, setSelectedDisplays] = useState<number[]>([]);
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [locationError, setLocationError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"list" | "map">("map");
 
   // Get user's current location
   useEffect(() => {
@@ -105,29 +106,64 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col md:flex-row">
-      {/* Sidebar */}
-      <div className="w-full md:w-96 h-1/2 md:h-full overflow-hidden border-b md:border-b-0 md:border-r border-gray-300">
-        <Sidebar
-          displays={displays}
-          selectedDisplays={selectedDisplays}
-          onDisplaySelect={handleDisplaySelect}
-          onCreateRoute={handleCreateRoute}
-          onClearRoute={handleClearRoute}
-          userLocation={userLocation}
-          locationError={locationError}
-        />
+    <div className="h-screen flex flex-col">
+      {/* Mobile Tab Navigation */}
+      <div className="md:hidden flex border-b border-gray-300 bg-white">
+        <button
+          onClick={() => setActiveTab("map")}
+          className={`flex-1 py-3 px-4 font-semibold text-sm transition-colors ${
+            activeTab === "map"
+              ? "bg-holiday-green text-white border-b-2 border-holiday-green"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+          }`}
+        >
+          🗺️ Map
+        </button>
+        <button
+          onClick={() => setActiveTab("list")}
+          className={`flex-1 py-3 px-4 font-semibold text-sm transition-colors ${
+            activeTab === "list"
+              ? "bg-holiday-green text-white border-b-2 border-holiday-green"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+          }`}
+        >
+          📋 List ({selectedDisplays.length})
+        </button>
       </div>
 
-      {/* Map */}
-      <div className="flex-1 h-1/2 md:h-full">
-        <MapView
-          displays={displays}
-          selectedDisplays={selectedDisplays}
-          onDisplaySelect={handleDisplaySelect}
-          userLocation={userLocation}
-          locationError={locationError}
-        />
+      {/* Content Area */}
+      <div className="flex-1 flex flex-row overflow-hidden">
+        {/* Sidebar */}
+        <div
+          className={`w-full md:w-96 h-full overflow-hidden md:border-r border-gray-300 ${
+            activeTab === "list" ? "block" : "hidden md:block"
+          }`}
+        >
+          <Sidebar
+            displays={displays}
+            selectedDisplays={selectedDisplays}
+            onDisplaySelect={handleDisplaySelect}
+            onCreateRoute={handleCreateRoute}
+            onClearRoute={handleClearRoute}
+            userLocation={userLocation}
+            locationError={locationError}
+          />
+        </div>
+
+        {/* Map */}
+        <div
+          className={`flex-1 h-full ${
+            activeTab === "map" ? "block" : "hidden md:block"
+          }`}
+        >
+          <MapView
+            displays={displays}
+            selectedDisplays={selectedDisplays}
+            onDisplaySelect={handleDisplaySelect}
+            userLocation={userLocation}
+            locationError={locationError}
+          />
+        </div>
       </div>
     </div>
   );
