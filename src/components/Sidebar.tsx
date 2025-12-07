@@ -164,7 +164,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 Showing displays with{" "}
                 {selectedFeatures.length === 1
                   ? "this feature"
-                  : "all selected features"}
+                  : "any of the selected features"}
               </p>
             )}
           </div>

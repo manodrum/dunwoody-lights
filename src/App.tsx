@@ -17,12 +17,12 @@ const App: React.FC = () => {
     new Set(displays.flatMap((display) => display.features || [])),
   ).sort();
 
-  // Filter displays by selected features
+  // Filter displays by selected features (OR logic - match any feature)
   const filteredDisplays =
     selectedFeatures.length === 0
       ? displays
       : displays.filter((display) =>
-          selectedFeatures.every((feature) =>
+          selectedFeatures.some((feature) =>
             display.features?.includes(feature),
           ),
         );
