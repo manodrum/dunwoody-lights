@@ -10,6 +10,22 @@ const App: React.FC = () => {
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [locationError, setLocationError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"list" | "map">("map");
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+
+  // Get all unique features from displays
+  const allFeatures = Array.from(
+    new Set(displays.flatMap((display) => display.features || [])),
+  ).sort();
+
+  // Filter displays by selected features
+  const filteredDisplays =
+    selectedFeatures.length === 0
+      ? displays
+      : displays.filter((display) =>
+          selectedFeatures.every((feature) =>
+            display.features?.includes(feature),
+          ),
+        );
 
   // Get user's current location
   useEffect(() => {
@@ -45,6 +61,20 @@ const App: React.FC = () => {
         return [...prev, id];
       }
     });
+  }, []);
+
+  const handleFeatureToggle = useCallback((feature: string) => {
+    setSelectedFeatures((prev) => {
+      if (prev.includes(feature)) {
+        return prev.filter((f) => f !== feature);
+      } else {
+        return [...prev, feature];
+      }
+    });
+  }, []);
+
+  const handleClearFilters = useCallback(() => {
+    setSelectedFeatures([]);
   }, []);
 
   const handleCreateRoute = useCallback(() => {
@@ -119,13 +149,18 @@ const App: React.FC = () => {
           }`}
         >
           <Sidebar
-            displays={displays}
+            displays={filteredDisplays}
+            allDisplays={displays}
             selectedDisplays={selectedDisplays}
             onDisplaySelect={handleDisplaySelect}
             onCreateRoute={handleCreateRoute}
             onClearRoute={handleClearRoute}
             userLocation={userLocation}
             locationError={locationError}
+            allFeatures={allFeatures}
+            selectedFeatures={selectedFeatures}
+            onFeatureToggle={handleFeatureToggle}
+            onClearFilters={handleClearFilters}
           />
         </div>
 
@@ -136,7 +171,7 @@ const App: React.FC = () => {
           }`}
         >
           <MapView
-            displays={displays}
+            displays={filteredDisplays}
             selectedDisplays={selectedDisplays}
             onDisplaySelect={handleDisplaySelect}
             userLocation={userLocation}
