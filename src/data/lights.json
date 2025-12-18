@@ -1,102 +1,188 @@
 [
   {
     "id": 1,
-    "name": "Winter Wonderland on Vermack",
-    "address": "4500 Vermack Rd, Dunwoody, GA 30338",
-    "lat": 33.9321,
-    "lng": -84.3345,
-    "description": "Amazing display with synchronized music and thousands of lights",
-    "rating": 5,
-    "features": ["Synchronized Music", "Inflatables", "Projections"]
+    "name": "",
+    "address": "4838 Kings Down Rd",
+    "lat": 33.937818670974444,
+    "lng": -84.32732214460901,
+    "description": "",
+    "features": ["Inflatables"]
   },
   {
     "id": 2,
-    "name": "North Peachtree Spectacular",
-    "address": "5200 North Peachtree Rd, Dunwoody, GA 30338",
-    "lat": 33.9456,
-    "lng": -84.3298,
-    "description": "Classic holiday display with beautiful traditional decorations",
-    "rating": 4,
-    "features": ["Traditional Lights", "Nativity Scene"]
+    "name": "",
+    "address": "1516 Devonshire Way",
+    "lat": 33.93255128074167,
+    "lng": -84.32647690101426,
+    "description": "",
+    "features": ["Inflatables"]
   },
   {
     "id": 3,
-    "name": "Chamblee Dunwoody Road Lights",
-    "address": "2100 Chamblee Dunwoody Rd, Dunwoody, GA 30338",
-    "lat": 33.9187,
-    "lng": -84.3156,
-    "description": "Colorful animated display with Santa and reindeer",
-    "rating": 5,
-    "features": ["Animated Displays", "Santa Scene", "Music"]
+    "name": "",
+    "address": "1506 Devonshire Way",
+    "lat": 33.93234215111729,
+    "lng": -84.32682753841155,
+    "description": "",
+    "features": ["Inflatables"]
   },
   {
     "id": 4,
-    "name": "Dunwoody Village Display",
-    "address": "5555 Chamblee Dunwoody Rd, Dunwoody, GA 30338",
-    "lat": 33.9312,
-    "lng": -84.3387,
-    "description": "Elegant white and gold themed lights throughout the property",
-    "rating": 4,
-    "features": ["Elegant Theme", "LED Lights"]
+    "name": "",
+    "address": "1625 N Springs Dr",
+    "lat": 33.92927687012377,
+    "lng": -84.32165003571657,
+    "description": "",
+    "features": ["Inflatables"]
   },
   {
     "id": 5,
-    "name": "Mount Vernon Christmas",
-    "address": "4800 Mount Vernon Rd, Dunwoody, GA 30338",
-    "lat": 33.9412,
-    "lng": -84.3421,
-    "description": "Multi-colored extravaganza with candy cane lane",
-    "rating": 5,
-    "features": ["Candy Canes", "Rainbow Lights", "Photo Spot"]
+    "name": "Great houses here!",
+    "address": "Kellogg Springs Dr",
+    "lat": 33.928878154748354,
+    "lng": -84.32027374103166,
+    "description": "",
+    "features": ["Traditional", "Whole Street"]
   },
   {
     "id": 6,
-    "name": "Tilly Mill Magic",
-    "address": "2500 Tilly Mill Rd, Dunwoody, GA 30338",
-    "lat": 33.9234,
-    "lng": -84.3112,
-    "description": "Whimsical display with animated characters and projections",
-    "rating": 4,
-    "features": ["Projections", "Animated Characters", "Interactive"]
+    "name": "A well lit house here",
+    "address": "Chateau Dr",
+    "lat": 33.926334523709045,
+    "lng": -84.32358373879137,
+    "description": "",
+    "features": ["Traditional"]
   },
   {
     "id": 7,
-    "name": "Georgetown Glow",
-    "address": "1200 Georgetown Way, Dunwoody, GA 30338",
-    "lat": 33.9378,
-    "lng": -84.3267,
-    "description": "Neighborhood favorite with rooftop Santa and sleigh",
-    "rating": 4,
-    "features": ["Rooftop Display", "Traditional Theme"]
+    "name": "Two great inflatable houses",
+    "address": "Cambridge Dr",
+    "lat": 33.934348701303726,
+    "lng": -84.31865525831344,
+    "description": "",
+    "features": ["Inflatables"]
   },
   {
     "id": 8,
-    "name": "Pernoshal Court Celebration",
-    "address": "4300 Pernoshal Ct, Dunwoody, GA 30096",
-    "lat": 33.9523,
-    "lng": -84.3389,
-    "description": "Synchronized light show set to popular holiday music",
-    "rating": 5,
-    "features": ["Synchronized Music", "Drive-by FM Station", "Spectacular"]
+    "name": "",
+    "address": "4882 Cambridge Dr",
+    "lat": 33.94080018001785,
+    "lng": -84.31995485901335,
+    "description": "",
+    "features": ["Traditional"]
   },
   {
     "id": 9,
-    "name": "Ashford Dunwoody Lights",
-    "address": "4900 Ashford Dunwoody Rd, Dunwoody, GA 30338",
-    "lat": 33.9289,
-    "lng": -84.3456,
-    "description": "Beautiful display with icicle lights and LED trees",
-    "rating": 4,
-    "features": ["Icicle Lights", "LED Trees", "Elegant"]
+    "name": "",
+    "address": "5024 Vernon Springs Dr",
+    "lat": 33.94565895241622,
+    "lng": -84.32339017637683,
+    "description": "",
+    "features": ["Traditional", "Lit Wreaths"]
   },
   {
     "id": 10,
-    "name": "Spalding Drive Winter Scene",
-    "address": "5100 Spalding Dr, Dunwoody, GA 30338",
-    "lat": 33.9367,
-    "lng": -84.3198,
-    "description": "Charming winter scene with snowmen and Santa workshop",
-    "rating": 4,
-    "features": ["Winter Theme", "Snowmen", "Santa Workshop"]
+    "name": "Good street!",
+    "address": "Cedarhurst Dr",
+    "lat": 33.94692235475209,
+    "lng": -84.32562974761935,
+    "description": "",
+    "features": ["Traditional"]
+  },
+  {
+    "id": 11,
+    "name": "",
+    "address": "5161 Mt Vernon Way",
+    "lat": 33.951074885106,
+    "lng": -84.3250950511251,
+    "description": "",
+    "features": ["Bright", "Harry Potter"]
+  },
+  {
+    "id": 12,
+    "name": "",
+    "address": "5260 Mt Vernon Way",
+    "lat": 33.95445097966755,
+    "lng": -84.32593971246796,
+    "description": "",
+    "features": ["Decorated Tree", "Nativity"]
+  },
+  {
+    "id": 13,
+    "name": "",
+    "address": "5391 Mt Vernon Way",
+    "lat": 33.95774879371592,
+    "lng": -84.32577192358377,
+    "description": "",
+    "features": ["Decorated Tree", "Inflatables", "Animations"]
+  },
+  {
+    "id": 14,
+    "name": "Several good houses here",
+    "address": "5540 Mt Vernon Way",
+    "lat": 33.962726928797245,
+    "lng": -84.32349841744613,
+    "description": "",
+    "features": ["Inflatables", "Nativity"]
+  },
+  {
+    "id": 15,
+    "name": "Several good houses",
+    "address": "Mt Vernon Way",
+    "lat": 33.9625573405002,
+    "lng": -84.32834266325882,
+    "description": "",
+    "features": ["Inflatables", "Decorated Tree", "Nativity"]
+  },
+  {
+    "id": 16,
+    "name": "",
+    "address": "1496 Withmere Ln",
+    "lat": 33.96225834904557,
+    "lng": -84.32842046515226,
+    "description": "",
+    "features": ["Traditional", "Nativity"]
+  },
+  {
+    "id": 17,
+    "name": "Epic Cul-de-sac!",
+    "address": "1412 Withmere Ln",
+    "lat": 33.96033623876216,
+    "lng": -84.33002174393934,
+    "description": "",
+    "features": [
+      "Inflatables",
+      "Decorated Tree",
+      "Projections",
+      "Animations",
+      "Whole Street"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "",
+    "address": "1504 Withmere Ln",
+    "lat": 33.962532945289745,
+    "lng": -84.32849956082178,
+    "description": "",
+    "features": ["Inflatables", "Decorated Tree"]
+  },
+  {
+    "id": 19,
+    "name": "",
+    "address": "5441 Redfield Rd",
+    "lat": 33.95950685926013,
+    "lng": -84.34268201738526,
+    "description": "",
+    "features": ["Light Tunnel"]
+  },
+  {
+    "id": 20,
+    "name": "Light show! Tune to 87.9 FM",
+    "address": "5496 Redbark Way",
+    "lat": 33.96175008993001,
+    "lng": -84.34343711065327,
+    "description": "",
+    "features": ["Synchronized Music"]
   }
 ]

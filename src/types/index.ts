@@ -1,6 +1,6 @@
 export interface LightDisplay {
   id: number;
-  name: string;
+  name?: string;
   address: string;
   lat: number;
   lng: number;
