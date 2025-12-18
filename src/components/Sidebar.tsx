@@ -216,14 +216,6 @@ const Sidebar: React.FC<SidebarProps> = ({
                     📍 {display.address}
                   </p>
 
-                  {display.rating && (
-                    <div className="flex items-center mb-2">
-                      <span className="text-yellow-500 text-sm">
-                        {"⭐".repeat(display.rating)}
-                      </span>
-                    </div>
-                  )}
-
                   {display.description && (
                     <p className="text-sm text-gray-700 mb-2 line-clamp-2">
                       {display.description}

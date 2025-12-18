@@ -132,16 +132,6 @@ const MapView: React.FC<MapViewProps> = ({
               {selectedMarker.description && (
                 <p className="text-sm mb-2">{selectedMarker.description}</p>
               )}
-              {selectedMarker.rating && (
-                <div className="flex items-center mb-2">
-                  <span className="text-yellow-500">
-                    {"⭐".repeat(selectedMarker.rating)}
-                  </span>
-                  <span className="ml-2 text-sm text-gray-600">
-                    ({selectedMarker.rating}/5)
-                  </span>
-                </div>
-              )}
               {selectedMarker.features &&
                 selectedMarker.features.length > 0 && (
                   <div className="mb-2">

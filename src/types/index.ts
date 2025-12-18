@@ -5,7 +5,6 @@ export interface LightDisplay {
   lat: number;
   lng: number;
   description?: string;
-  rating?: number;
   imageUrl?: string;
   features?: string[];
 }
