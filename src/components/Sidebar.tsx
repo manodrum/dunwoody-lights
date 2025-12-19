@@ -174,11 +174,19 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Display List */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-4">
-          <h2 className="text-lg font-bold mb-3 text-gray-800">
-            {selectedFeatures.length > 0
-              ? `Filtered Displays (${displays.length} of ${allDisplays.length})`
-              : `All Displays (${displays.length})`}
-          </h2>
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-lg font-bold text-gray-800">
+              {selectedFeatures.length > 0
+                ? `Filtered Displays (${displays.length} of ${allDisplays.length})`
+                : `All Displays (${displays.length})`}
+            </h2>
+            <a
+              href={`mailto:manodrum@gmail.com?subject=${encodeURIComponent("[Dunwoody Lights] - Add house")}&body=${encodeURIComponent("Please add my house to the Dunwoody Lights map!\n\nAddress:\n\nDescription:\n\nFeatures (e.g., Synchronized Music, Inflatables, etc.):\n\nThank you!")}`}
+              className="text-xs text-holiday-green hover:underline font-medium whitespace-nowrap"
+            >
+              + Add your house
+            </a>
+          </div>
           <div className="space-y-3">
             {displays.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
